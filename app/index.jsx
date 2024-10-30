@@ -62,14 +62,16 @@ export default function HomeScreen() {
 
   return (
 
-    <View style={{ backgroundColor: "#121212",padding:20 ,paddingBottom:80}}>
-      <SafeAreaView>
-       
+
+      <SafeAreaView style={{ backgroundColor: "#121212"}} >
+      
+           <View style={{ backgroundColor: "#121212",paddingBottom:80 }}>
         <StatusBar />
 
         <View style={{ display: "flex",
            justifyContent:"space-between",
            alignItems:"center",
+           paddingHorizontal:20,
           flexDirection:"row" }}>
           <Image
           style={{width:50,height:50}}
@@ -87,8 +89,9 @@ export default function HomeScreen() {
      
         
         </View>
-      </SafeAreaView>
+   
       {/**display trending movies */}
+
 
       {loading ? (
         <Loading />
@@ -97,12 +100,19 @@ export default function HomeScreen() {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ flexGrow: 1, paddingBottom: 10 }}
         >
+          <View style={{paddingHorizontal:20}}>
+
+       
           {trending.length > 0 && <TrendingMovies data={trending} />}
           <MovieList title="upcoming" data={upcoming} />
           <MovieList title="Toprated" data={topRated} />
+          </View>
         </ScrollView>
       )}
-    </View>
+
+</View>
+         </SafeAreaView>
+    
   );
 }
 
